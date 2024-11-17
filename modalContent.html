@@ -1,0 +1,298 @@
+<div id="modalFormContainer" class="modal-form-container" style="display: none">
+  <style>
+    /* Styling for the modal form container */
+    .modal-form-container {
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+
+    /* Styling for the modal content */
+    .modal-form-container #modalContent {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      max-width: 50rem;
+      min-width: 350px;
+      margin: 0 auto;
+    }
+
+    /* Styling for form labels */
+    .modal-form-container label {
+      display: inline-block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    /* Styling for form inputs */
+    .modal-form-container input,
+    .modal-form-container select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    /* Additional styling for select dropdown */
+    .modal-form-container select {
+      appearance: none; /* Remove default styling */
+      background-color: white; /* Background color */
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 8 8" width="100%"><path fill="%23007bff" d="M4 5l-2-2h4z"></path></svg>'); /* Custom arrow */
+      background-repeat: no-repeat;
+      background-position: right 10px center; /* Position the arrow */
+      background-size: 10px; /* Size of the arrow */
+    }
+
+    /* Styling for the form rows */
+    .form-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      gap: 5px;
+    }
+
+    /* Styling for form groups */
+    .form-group {
+      flex: 48%; /* Adjust width as needed */
+    }
+
+    /* Center the button container */
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px; /* Space above the button */
+    }
+
+    /* Styling for the submit button */
+    .modal-form-container button[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .modal-form-container button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    /* Styling for the close button */
+    .modal-form-container #closeModal {
+      cursor: pointer;
+      float: right;
+      font-weight: bold;
+    }
+
+    /* Overlay style */
+    .modal-form-container #modalOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+
+    /* error-message */
+    .error-message {
+      color: red;
+      display: none;
+      font-size: 11px;
+    }
+
+    /* Spinner styles */
+    .spinner {
+      border: 8px solid #f3f3f3; /* Light grey */
+      border-top: 8px solid #3498db; /* Blue */
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto; /* Centering */
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Loading overlay style */
+    #loadingOverlay {
+      display: none; /* Initially hidden */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7); /* Dark overlay */
+      z-index: 1002; /* On top of modal content */
+      text-align: center; /* Centering text */
+      padding-top: 20%;
+    }
+  </style>
+  <div
+    id="modalOverlay"
+    style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    "
+  ></div>
+  <div
+    id="modalContent"
+    style="
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      z-index: 1001;
+    "
+  >
+    <span
+      id="closeModal"
+      style="cursor: pointer; float: right; font-weight: bold"
+      >&times;</span
+    >
+    <h2>Check out</h2>
+    <form id="customerInfoForm" action="#" method="POST" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName"
+            >First Name <span style="color: red">*</span></label
+          >
+          <input
+            id="firstName"
+            name="firstName"
+            type="text"
+            placeholder="First Name"
+            required
+          />
+          <span class="error-message">Please enter your first name.</span>
+        </div>
+        <div class="form-group">
+          <label for="lastName"
+            >Last Name <span style="color: red">*</span></label
+          >
+          <input
+            id="lastName"
+            name="lastName"
+            type="text"
+            placeholder="Last Name"
+            required
+          />
+          <span class="error-message">Please enter your last name.</span>
+        </div>
+      </div>
+
+      <label for="email">Email Address <span style="color: red">*</span></label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        placeholder="Email Address"
+        required
+      />
+      <span class="error-message">Please enter a valid email address.</span>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="city">City <span style="color: red">*</span></label>
+          <input
+            id="city"
+            name="city"
+            type="text"
+            placeholder="Fakecity"
+            required
+          />
+          <span class="error-message">Please enter your city.</span>
+        </div>
+        <div class="form-group">
+          <label for="province"
+            >Province <span style="color: red">*</span></label
+          >
+          <input
+            id="province"
+            name="province"
+            type="text"
+            placeholder="Ontario"
+            required
+          />
+          <span class="error-message">Please enter your province.</span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="country">Country <span style="color: red">*</span></label>
+          <select id="country" name="country" required>
+            <option value="" disabled selected>Select your country</option>
+            ${countryOptionsPlaceholder}
+          </select>
+          <span class="error-message">Please select a country.</span>
+        </div>
+        <div class="form-group">
+          <label for="zip">Zip Code <span style="color: red">*</span></label>
+          <input id="zip" name="zip" type="text" placeholder="12345" required />
+          <span class="error-message">Please enter a valid zip code.</span>
+        </div>
+      </div>
+
+      <label for="address1">Address <span style="color: red">*</span></label>
+      <input
+        id="address1"
+        name="address1"
+        type="text"
+        placeholder="123 Fake Street"
+        required
+      />
+      <span class="error-message">Please enter your address.</span>
+
+      <label for="phone">Phone <span style="color: red">*</span></label>
+      <input
+        id="phone"
+        name="phone"
+        type="tel"
+        placeholder="555-555-5555"
+        required
+      />
+      <span class="error-message">Please enter a valid phone number.</span>
+
+      <div class="button-container">
+        <button type="submit">Pay Now</button>
+      </div>
+    </form>
+    <div
+      id="loadingOverlay"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 1002;
+        text-align: center;
+        padding-top: 20%;
+      "
+    >
+      <div class="spinner"></div>
+      <p style="color: white">Loading... Please wait.</p>
+    </div>
+  </div>
+</div>
