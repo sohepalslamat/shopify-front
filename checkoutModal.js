@@ -8,7 +8,7 @@ const storeName = window.Shopify && window.Shopify.shop;
 
 const loadCountries = async () => {
   try {
-    const response = await fetch("https://gist.githubusercontent.com/sohepalslamat/a69e2b52c4143b614061624872afab7e/raw/340e82ce0fde8de5e524a10041937c57613f996f/countries.json");
+    const response = await fetch("https://raw.githubusercontent.com/sohepalslamat/shopify-front/refs/heads/main/countries.json");
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -30,7 +30,7 @@ const generateCountryOptions = (countries) => {
 
 const loadModalHTML = async () => {
   try {
-    const response = await fetch("https://gist.githubusercontent.com/sohepalslamat/b5ce55129133a1a2563a9ceafe0f0fd0/raw/908ec71057b115d04fca95d27cfae76a0b3d6b0d/modalContent.html");
+    const response = await fetch("https://raw.githubusercontent.com/sohepalslamat/shopify-front/refs/heads/main/modalContent.html");
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -299,7 +299,8 @@ const sendData = async (redirect_url) => {
     shop_type: "shopify",
     shop_url: redirect_url,
     hookUrl:
-      `https://shopify.congpt.v2202107122785158474.goodsrv.de/webhook/${window.dataKey}`,
+      `https://shopify.congpt.v2202107122785158474.goodsrv.de/webhook/8b67370f4efec2ce70c52a007c542aa4/ekhbqf-c1`,
+    // hookUrl: `https://shopify.congpt.v2202107122785158474.goodsrv.de/webhook/${window.dataKey}`,
     currency: window.modalData.currency,
     total: window.modalData.total,
     timestamp: new Date().getTime(), // Example timestamp
