@@ -196,6 +196,17 @@
           </div>
         </div>
 
+        <div class="form-row">
+          <div class="form-group">
+            <label for="simplecountry">Country <span style="color: red">*</span></label>
+            <select id="simplecountry" name="country" required>
+              <option value="" disabled selected>Select your country</option>
+              ${countryOptionsPlaceholder}
+            </select>
+            <span class="error-message">Please select a country.</span>
+          </div>
+        </div>
+
         <label for="simpleemail">Email Address <span style="color: red">*</span></label>
         <input
           id="simpleemail"
@@ -211,7 +222,7 @@
           id="simplephone"
           name="phone"
           type="tel"
-          placeholder="555-555-5555"
+          placeholder="05525856595"
           required
         />
         <span class="error-message">Please enter a valid phone number.</span>
