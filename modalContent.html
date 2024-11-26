@@ -168,114 +168,164 @@
       style="cursor: pointer; float: right; font-weight: bold"
       >&times;</span
     >
-    <h2>Check out</h2>
-    <form id="customerInfoForm" action="#" method="POST" novalidate>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="firstName"
-            >First Name <span style="color: red">*</span></label
-          >
-          <input
-            id="firstName"
-            name="firstName"
-            type="text"
-            placeholder="First Name"
-            required
-          />
-          <span class="error-message">Please enter your first name.</span>
+    <div id="simpleFormContainer">
+      <h2>Check out</h2>
+      <form id="simpleCustomerForm" action="#" method="POST" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="simplefirstname">First Name <span style="color: red">*</span></label>
+            <input
+              id="simplefirstname"
+              name="firstname"
+              type="text"
+              placeholder="First Name"
+              required
+            />
+            <span class="error-message">Please enter your first name.</span>
+          </div>
+          <div class="form-group">
+            <label for="simplelastname">Last Name <span style="color: red">*</span></label>
+            <input
+              id="simplelastname"
+              name="lastname"
+              type="text"
+              placeholder="Last Name"
+              required
+            />
+            <span class="error-message">Please enter your last name.</span>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="lastName"
-            >Last Name <span style="color: red">*</span></label
-          >
-          <input
-            id="lastName"
-            name="lastName"
-            type="text"
-            placeholder="Last Name"
-            required
-          />
-          <span class="error-message">Please enter your last name.</span>
+
+        <label for="simpleemail">Email Address <span style="color: red">*</span></label>
+        <input
+          id="simpleemail"
+          name="email"
+          type="email"
+          placeholder="Email Address"
+          required
+        />
+        <span class="error-message">Please enter a valid email address.</span>
+
+        <label for="simplephone">Phone <span style="color: red">*</span></label>
+        <input
+          id="simplephone"
+          name="phone"
+          type="tel"
+          placeholder="555-555-5555"
+          required
+        />
+        <span class="error-message">Please enter a valid phone number.</span>
+
+        <div class="button-container">
+          <button type="submit">Pay Now</button>
         </div>
-      </div>
+      </form>
+    </div>
 
-      <label for="email">Email Address <span style="color: red">*</span></label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        placeholder="Email Address"
-        required
-      />
-      <span class="error-message">Please enter a valid email address.</span>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label for="city">City <span style="color: red">*</span></label>
-          <input
-            id="city"
-            name="city"
-            type="text"
-            placeholder="Fakecity"
-            required
-          />
-          <span class="error-message">Please enter your city.</span>
+    <div id="fullFormContainer">
+      <h2>Complete Check out</h2>
+      <form id="fullCustomerForm" action="#" method="POST" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstname">First Name <span style="color: red">*</span></label>
+            <input
+              id="firstname"
+              name="firstname"
+              type="text"
+              placeholder="First Name"
+              required
+            />
+            <span class="error-message">Please enter your first name.</span>
+          </div>
+          <div class="form-group">
+            <label for="lastname">Last Name <span style="color: red">*</span></label>
+            <input
+              id="lastname"
+              name="lastname"
+              type="text"
+              placeholder="Last Name"
+              required
+            />
+            <span class="error-message">Please enter your last name.</span>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="province"
-            >Province <span style="color: red">*</span></label
-          >
-          <input
-            id="province"
-            name="province"
-            type="text"
-            placeholder="Ontario"
-            required
-          />
-          <span class="error-message">Please enter your province.</span>
+
+        <label for="email">Email Address <span style="color: red">*</span></label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="Email Address"
+          required
+        />
+        <span class="error-message">Please enter a valid email address.</span>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="city">City <span style="color: red">*</span></label>
+            <input
+              id="city"
+              name="city"
+              type="text"
+              placeholder="Fakecity"
+              required
+            />
+            <span class="error-message">Please enter your city.</span>
+          </div>
+          <div class="form-group">
+            <label for="province">Province</label>
+            <input
+              id="province"
+              name="province"
+              type="text"
+              placeholder="Ontario"
+            />
+            <span class="error-message">Please enter your province.</span>
+          </div>
         </div>
-      </div>
 
-      <div class="form-row">
-        <div class="form-group">
-          <label for="country">Country <span style="color: red">*</span></label>
-          <select id="country" name="country" required>
-            <option value="" disabled selected>Select your country</option>
-            ${countryOptionsPlaceholder}
-          </select>
-          <span class="error-message">Please select a country.</span>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="country">Country <span style="color: red">*</span></label>
+            <select id="country" name="country" required>
+              <option value="" disabled selected>Select your country</option>
+              ${countryOptionsPlaceholder}
+            </select>
+            <span class="error-message">Please select a country.</span>
+          </div>
+          <div class="form-group">
+            <label for="zip">Zip Code <span style="color: red">*</span></label>
+            <input id="zip" name="zip" type="text" placeholder="12345" required />
+            <span class="error-message">Please enter a valid zip code.</span>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="zip">Zip Code <span style="color: red">*</span></label>
-          <input id="zip" name="zip" type="text" placeholder="12345" required />
-          <span class="error-message">Please enter a valid zip code.</span>
+
+        <label for="address1">Address <span style="color: red">*</span></label>
+        <input
+          id="address1"
+          name="address1"
+          type="text"
+          placeholder="123 Fake Street"
+          required
+        />
+        <span class="error-message">Please enter your address.</span>
+
+        <label for="phone">Phone <span style="color: red">*</span></label>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          placeholder="05525856595"
+          required
+        />
+        <span class="error-message">Please enter a valid phone number.</span>
+
+        <div class="button-container">
+          <button type="submit">Pay Now</button>
         </div>
-      </div>
+      </form>
+    </div>
 
-      <label for="address1">Address <span style="color: red">*</span></label>
-      <input
-        id="address1"
-        name="address1"
-        type="text"
-        placeholder="123 Fake Street"
-        required
-      />
-      <span class="error-message">Please enter your address.</span>
-
-      <label for="phone">Phone <span style="color: red">*</span></label>
-      <input
-        id="phone"
-        name="phone"
-        type="tel"
-        placeholder="555-555-5555"
-        required
-      />
-      <span class="error-message">Please enter a valid phone number.</span>
-
-      <div class="button-container">
-        <button type="submit">Pay Now</button>
-      </div>
-    </form>
     <div
       id="loadingOverlay"
       style="
